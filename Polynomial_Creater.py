@@ -4,7 +4,7 @@ def finder(n: int):
     else:
         p_last, q_last = finder(n - 1)
 
-        return Polynomial([Term(1, 1)]) * p_last + q_last * Polynomial([Term(0, 1), Term(2, -1)]) * Polynomial([Term(0, -1)]), Polynomial([Term(1, 1)]) * q_last + p_last
+        return Polynomial([Term(1, 1)]) * p_last - q_last * Polynomial([Term(0, 1), Term(2, -1)]), Polynomial([Term(1, 1)]) * q_last + p_last
 
 
 class Term:
@@ -64,6 +64,9 @@ class Polynomial:
                 output.terms.append(term)
 
         return output
+
+    def __sub__(self, poly):
+        return self + poly * Polynomial([Term(0, -1)])
 
     def __mul__(self, poly):
         new_poly = Polynomial([])

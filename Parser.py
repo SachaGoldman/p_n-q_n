@@ -1,4 +1,4 @@
-file = open('Output/p_500.txt', 'r')
+file = open('Outputs/p_500.txt', 'r')
 
 file_data = file.read()
 
